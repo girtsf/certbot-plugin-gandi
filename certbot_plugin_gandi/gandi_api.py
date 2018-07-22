@@ -1,5 +1,4 @@
 import requests
-import urllib
 from collections import namedtuple
 from certbot.plugins import dns_common
 
@@ -33,7 +32,7 @@ def _headers(cfg):
 
 def _get_url(*segs):
     return 'https://dns.api.gandi.net/api/v5/{}'.format(
-        '/'.join(urllib.quote(seg, safe='') for seg in segs)
+        '/'.join(requests.utils.quote(seg, safe='') for seg in segs)
     )
 
 
